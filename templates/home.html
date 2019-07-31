@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% block content %}
+        <p>fajwoi</p>
+        {%for ad in ads%}
+        <a href="{{url_for('get_ad, ad_id=ad._id')}}">LINK</a>
+        {% endfor %}
+{% endblock %}

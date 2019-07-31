@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+        {% for ad in ads%}
+        {{ad.category_name}}
+        <br>
+        {{ad.ad_name}}
+        <br>
+        <img src="{{ad.ad_image}}" alt="cdplayer">
+        <br>
+        {{ad.asking_price}}
+        <br>
+        {{ad.seller_name}}
+        <br>
+        {{ad.phone_number}}
+        <br>
+        <br>
+        {% endfor %}
