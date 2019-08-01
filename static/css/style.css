@@ -1,4 +1,14 @@
 .home-images{
-    height: 10%;
-    width: 10%;
+    height: 100%;
+    width: 100%;
+
+}
+
+.image-frame{
+    background-image:url("../images/mask.png");
+    height:100px;
+    
+    background-size:contain;
+    background-repeat: no-repeat;
+
 }
