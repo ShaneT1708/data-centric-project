@@ -14,7 +14,9 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/go_home')
 def go_home():
-    return render_template("home.html")
+    all_ads = mongo.db.ads.find()
+
+    return render_template("home.html", ads=all_ads)
 
 
 @app.route('/get_ad/<ad_id>')
