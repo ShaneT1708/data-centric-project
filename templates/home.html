@@ -1,15 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container">
-        <div class="row">
-        {% for ad in ads %}
-        <div class="col s3">
-        <a href="{{url_for('get_ad', ad_id=ad._id)}}">{{ad.ad_name}} <br>
-        <!--<img class="home-images" src="{{ad.ad_image}}" alt="{{ad.ad_name}}">-->
-        <div style="background-image:url({{ad.ad_image}});" class="image-frame"></div>
+    <div class="row">
+    {% for ad in ads %}
+    <div class="col s3 ">
+        <div class="home-box">
+            <a href="{{url_for('get_ad', ad_id=ad._id)}}">{{ad.ad_name}} <br>
+            <div style="background-image:url({{ad.ad_image}});" class="image-frame"></div>
+                
         
-        </a>
-        </div>
+            </a>
+        </div>    
+    </div>
         {% endfor %}
         </div>
 </div>
