@@ -5,7 +5,7 @@ The idea if for a basic buy and sell website.
 
 comments section?
 user registration?
-
+sort by date(created/modified)/price
 
 CHECK OUT GOOGLE SIGN IN
 
@@ -18,3 +18,6 @@ DATE MODIFIED ON
 SOLD CHECKBOX
 
 USER COLLECTION
+
+Make all pages uniform style
+All fields required?

@@ -14,9 +14,10 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/go_home')
 def go_home():
-    all_ads = mongo.db.ads.find()
 
-    return render_template("home.html", ads=all_ads)
+    all_ads = mongo.db.ads.find().sort("date_created" , 1).skip(0).limit(8)
+    all_categories = mongo.db.categories.find()
+    return render_template("home.html", ads=all_ads, categories=all_categories)
 
 
 @app.route('/get_ad/<ad_id>')
@@ -26,17 +27,27 @@ def get_ad(ad_id):
     return render_template('ad.html', ad=the_ad, categories=all_categories)
 
 
-# @app.route('/add_task')
-# def add_task():
-#     return render_template('addtask.html',
-#                           categories=mongo.db.categories.find())
+@app.route('/add_ad')
+def add_ad():
+    return render_template('addad.html',
+                          categories=mongo.db.categories.find())
 
 
-# @app.route('/insert_task', methods=['POST'])
-# def insert_task():
-#     tasks = mongo.db.tasks
-#     tasks.insert_one(request.form.to_dict())
-#     return redirect(url_for('get_tasks'))
+@app.route('/insert_ad', methods=['POST'])
+def insert_ad():
+    ads = mongo.db.ads
+    all_ads = mongo.db.ads.find()
+    ads.insert_one(request.form.to_dict())
+    return render_template("home.html", ads=all_ads)
+    # return redirect(url_for('go_home'))
+
+@app.route('/by_cat/<cat_name>')
+def by_cat(cat_name):
+    # the_ad = mongo.db.ads.find_one({"_id": ObjectId(ad_id)})
+    cat_ads = mongo.db.ads.find({"category_name": cat_name}).sort("date_created" , 1).skip(0).limit(8)
+    # one_category = mongo.db.categories.find_one({"category_name": cat_name})
+    return render_template('catbrowse.html', ads=cat_ads)
+
 
 
 if __name__ == '__main__':
