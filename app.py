@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import datetime
 
 app = Flask(__name__)
 
@@ -29,8 +30,7 @@ def get_ad(ad_id):
 
 @app.route('/add_ad')
 def add_ad():
-    return render_template('addad.html',
-                          categories=mongo.db.categories.find())
+    return render_template('addad.html', categories=mongo.db.categories.find(), date=datetime.datetime.today())
 
 
 @app.route('/insert_ad', methods=['POST'])
@@ -38,7 +38,7 @@ def insert_ad():
     ads = mongo.db.ads
     all_ads = mongo.db.ads.find()
     ads.insert_one(request.form.to_dict())
-    return render_template("home.html", ads=all_ads)
+    return render_template("home.html", ads=all_ads, )
     # return redirect(url_for('go_home'))
 
 @app.route('/by_cat/<cat_name>')

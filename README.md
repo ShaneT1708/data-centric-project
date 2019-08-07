@@ -20,4 +20,6 @@ SOLD CHECKBOX
 USER COLLECTION
 
 Make all pages uniform style
-All fields required?
+All fields required?4
+
+have default image?
