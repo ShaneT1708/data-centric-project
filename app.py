@@ -30,6 +30,7 @@ def get_ad(ad_id):
 
 @app.route('/add_ad')
 def add_ad():
+
     return render_template('addad.html', categories=mongo.db.categories.find(), date=datetime.datetime.today())
 
 
@@ -38,6 +39,7 @@ def insert_ad():
     ads = mongo.db.ads
     all_ads = mongo.db.ads.find()
     ads.insert_one(request.form.to_dict())
+    
     return render_template("home.html", ads=all_ads, )
     # return redirect(url_for('go_home'))
 

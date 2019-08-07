@@ -4,7 +4,13 @@
         <br>
         {{ad.ad_name}}
         <br>
+        {% if ad.ad_image =="" %}
+        <img src="../static/images/default.png" alt="image">
+        
+        {% else %}
         <img src="{{ad.ad_image}}" alt="image">
+        {% endif %}
+        
         <br>
         {{ad.ad_description}}
         <br>
