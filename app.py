@@ -97,10 +97,12 @@ def all_ads():
     all_categories = mongo.db.categories.find()
     return render_template("allads.html", ads=all_ads, categories=all_categories)
 
-@app.route('/search')
+@app.route('/search', methods=['POST'])
 def search():
-    results = mongo.db.ads.find({'$text': {'$search': 'salty'}})
-    return render_template("allads.html", )
+    # mongo.db.recipes.drop_indexes()
+    query = request.form.get('query')
+    results = mongo.db.ads.find({'$text': {'$search': query}})
+    return render_template("allads.html", ads=results, type='searched', query=query)
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
