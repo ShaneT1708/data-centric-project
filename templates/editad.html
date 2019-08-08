@@ -19,7 +19,7 @@
                 <label>Ad Category</label>
             </div>
         </div>
-<div class="input-field col s12">
+        <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <input id="ad_name" name="ad_name" type="text" value="{{ad.ad_name}}">
                 <label for="icon_prefix">Ad Name</label>
@@ -62,9 +62,18 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="location" id="location" class="materialize-textarea">{{ad.location}}</textarea>
-                <label for="icon_telephone">Location</label>
+                <i class="material-icons prefix">poll</i>
+                <select id="county" name="county_name">
+                  <option value="" disabled selected>Choose County</option>
+                  {% for cou in counties %}
+                      {% if cou.county_name == ad.county_name%}
+                      <option value="{{cou.county_name}}" selected >{{cou.county_name}}</option>
+                      {% else %}
+                       <option value="{{cou.county_name}}">{{cou.county_name}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <label>County</label>
             </div>
         </div>
 

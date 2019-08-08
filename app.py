@@ -18,7 +18,8 @@ def go_home():
 
     all_ads = mongo.db.ads.find().sort("date_created" , 1).skip(0).limit(8)
     all_categories = mongo.db.categories.find()
-    return render_template("home.html", ads=all_ads, categories=all_categories)
+    all_counties = mongo.db.counties.find()
+    return render_template("home.html", ads=all_ads, categories=all_categories, counties=all_counties)
 
 
 @app.route('/get_ad/<ad_id>')
@@ -31,7 +32,7 @@ def get_ad(ad_id):
 @app.route('/add_ad')
 def add_ad():
 
-    return render_template('addad.html', categories=mongo.db.categories.find(), date=datetime.datetime.today())
+    return render_template('addad.html', categories=mongo.db.categories.find(), date=datetime.datetime.today(), counties=mongo.db.counties.find())
 
 
 @app.route('/insert_ad', methods=['POST'])
@@ -46,17 +47,22 @@ def insert_ad():
 @app.route('/by_cat/<cat_name>')
 def by_cat(cat_name):
     # the_ad = mongo.db.ads.find_one({"_id": ObjectId(ad_id)})
-    cat_ads = mongo.db.ads.find({"category_name": cat_name}).sort("date_created" , 1).skip(0).limit(8)
+    cat_ads = mongo.db.ads.find({"category_name": cat_name}).sort("date_created" , 1).skip(0)
     # one_category = mongo.db.categories.find_one({"category_name": cat_name})
     return render_template('catbrowse.html', ads=cat_ads)
+
+@app.route('/by_cou/<cou_name>')
+def by_cou(cou_name):
+    cou_ads = mongo.db.ads.find({"county_name": cou_name}).sort("date_created" , 1).skip(0)
+    return render_template('catbrowse.html', ads=cou_ads)
 
 
 @app.route('/edit_ad/<ad_id>')
 def edit_ad(ad_id):
     the_ad =  mongo.db.ads.find_one({"_id": ObjectId(ad_id)})
     all_categories =  mongo.db.categories.find()
-    return render_template('editad.html', ad=the_ad,
-                           categories=all_categories)
+    all_counties =  mongo.db.counties.find()
+    return render_template('editad.html', ad=the_ad, categories=all_categories, counties=all_counties)
 
 
 
@@ -76,6 +82,25 @@ def update_ad(ad_id):
         
     })
     return render_template("home.html", ads=all_ads, )
+
+@app.route('/delete_ad/<ad_id>')
+def delete_ad(ad_id):
+    all_ads = mongo.db.ads.find().sort("date_created" , 1).skip(0).limit(8)
+    mongo.db.ads.remove({'_id': ObjectId(ad_id)})
+    return render_template("home.html", ads=all_ads, )
+
+
+@app.route('/all_ads')
+def all_ads():
+
+    all_ads = mongo.db.ads.find().sort("date_created" , 1).skip(0)
+    all_categories = mongo.db.categories.find()
+    return render_template("allads.html", ads=all_ads, categories=all_categories)
+
+@app.route('/search')
+def search():
+    results = mongo.db.ads.find({'$text': {'$search': 'salty'}})
+    return render_template("allads.html", )
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

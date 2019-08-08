@@ -57,12 +57,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="location" id="location" class="materialize-textarea"></textarea>
-                <label for="icon_telephone">Location</label>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="county" name="county_name">
+                  <option value="" disabled selected>Choose County</option>
+                  {% for cou in counties %}
+                      <option value="{{cou.county_name}}">{{cou.county_name}}</option>
+                  {% endfor %}
+                </select>
+                    <label>County</label>
+                </div>
             </div>
-        </div>
 
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" name="date_created" value='{{date}}'>Post Ad

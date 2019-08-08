@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+    
+
+    
+
+    <div class="row">
+    {% for ad in ads %}
+    <div class="col s3 ">
+        <div class="home-box">
+            <a href="{{url_for('get_ad', ad_id=ad._id)}}">{{ad.ad_name}} <br>
+            <!--{% if ad.ad_image =="" %}-->
+            <div style="background-image:url(../static/images/default.png);" class="image-frame"></div>
+            <!--{% else %}-->
+            <div style="background-image:url({{ad.ad_image}});" class="image-frame"></div>
+            <!--{% endif %}-->
+                
+        
+            </a>
+        </div>    
+    </div>
+        {% endfor %}
+        </div>
+</div>
+        
+{% endblock %}
