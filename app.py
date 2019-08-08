@@ -37,7 +37,7 @@ def add_ad():
 @app.route('/insert_ad', methods=['POST'])
 def insert_ad():
     ads = mongo.db.ads
-    all_ads = mongo.db.ads.find()
+    all_ads = mongo.db.ads.find().sort("date_created" , 1).skip(0).limit(8)
     ads.insert_one(request.form.to_dict())
     
     return render_template("home.html", ads=all_ads, )
@@ -51,6 +51,31 @@ def by_cat(cat_name):
     return render_template('catbrowse.html', ads=cat_ads)
 
 
+@app.route('/edit_ad/<ad_id>')
+def edit_ad(ad_id):
+    the_ad =  mongo.db.ads.find_one({"_id": ObjectId(ad_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('editad.html', ad=the_ad,
+                           categories=all_categories)
+
+
+
+@app.route('/update_ad/<ad_id>', methods=["POST"])
+def update_ad(ad_id):
+    ads = mongo.db.ads
+    all_ads = mongo.db.ads.find().sort("date_created" , 1).skip(0).limit(8)
+    ads.update( {'_id': ObjectId(ad_id)},
+    {
+        'ad_name':request.form.get('ad_name'),
+        'category_name':request.form.get('category_name'),
+        'ad_image': request.form.get('ad_description'),
+        'asking_price': request.form.get('asking_price'),
+        'seller_name':request.form.get('seller_name'),
+        'phone_number':request.form.get('phone_number'),
+        'location':request.form.get('location'),
+        
+    })
+    return render_template("home.html", ads=all_ads, )
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
