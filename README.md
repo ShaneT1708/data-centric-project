@@ -29,26 +29,26 @@ The UI is left fairly basic as I was running out of time to submit. There are mu
 
 Because I ran short on time, there are quite a few extra features that I would Ideally add.
 
--Add second step to delete. (At the moment a user could easily delete an ad from the database because the delete button deletes instantly).
--Remove Time from dates. (The date information on the ad page looks messy at the moment)
--Display number of ads in category/county in modal. (So the user would, for example know before clicking if the category/county they were interested in had any associated ads).
--Think about segmenting all adds by category lines.
--Comments section in ad page.
--User registration and only allow the user who made an ad to delete it.
--Add Pagination.
--Improve Styling.
+- Add second step to delete. (At the moment a user could easily delete an ad from the database because the delete button deletes instantly).
+- Remove Time from dates. (The date information on the ad page looks messy at the moment)
+- Display number of ads in category/county in modal. (So the user would, for example know before clicking if the category/county they were interested in had any associated ads).
+- Think about segmenting all adds by category lines.
+- Comments section in ad page.
+- User registration and only allow the user who made an ad to delete it.
+- Add Pagination.
+- Improve Styling.
 
 ## Technologies Used
 
--Html: Used for the pages skeletons.
--Css: Used to style the pages.
--Python: Used to organise the backend.
--Materialize: Used for some styling and icons.
--MongoDB: Used to host the database.
--Flask/Jinja: Used to connect the different web pages.
--GitHub: Used to back up the code.
--Heroku: Used for live hosting.
--Jquery: Used to get materialize to work.
+- Html: Used for the pages skeletons.
+- Css: Used to style the pages.
+- Python: Used to organise the backend.
+- Materialize: Used for some styling and icons.
+- MongoDB: Used to host the database.
+- Flask/Jinja: Used to connect the different web pages.
+- GitHub: Used to back up the code.
+- Heroku: Used for live hosting.
+- Jquery: Used to get materialize to work.
 
 ## Testing
 
