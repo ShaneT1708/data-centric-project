@@ -12,19 +12,19 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="{{url_for('go_home')}}" class="brand-logo">Buy and Sell</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="{{url_for('go_home')}}">Home</a></li>
-                    <li><a href="{{url_for('add_ad')}}">Post Ad</a></li>
-                </ul>
-                <ul class="side-nav" id="mobile-demo">
-                    <li><a href="{{url_for('go_home')}}">Home</a></li>
-                    <li><a href="{{url_for('add_ad')}}">Post Ad</a></li>
+                <!--<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+                <!--<ul id="nav-mobile" class="right hide-on-med-and-down">-->
+                <!--    <li><a href="{{url_for('go_home')}}">Home</a></li>-->
+                <!--    <li><a href="{{url_for('add_ad')}}">Post Ad</a></li>-->
+                <!--</ul>-->
+                <!--<ul class="side-nav" id="mobile-demo">-->
+                <!--    <li><a href="{{url_for('go_home')}}">Home</a></li>-->
+                <!--    <li><a href="{{url_for('add_ad')}}">Post Ad</a></li>-->
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container outer">
         {% block content %} {% endblock %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

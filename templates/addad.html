@@ -1,12 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <h3>Post Ad</h3>
+<div class="container inner">
 <div class="row">
     <form action="{{ url_for('insert_ad') }}" method="POST"  class="col s12">
         <div class="row">
-            <div class="row">
+            
                 <div class="input-field col s12">
                     <i class="material-icons prefix">poll</i>
-                    <select id="category" name="category_name">
+                    <select id="category" name="category_name" required>
                   <option value="" disabled selected>Choose Category</option>
                   {% for cat in categories %}
                       <option value="{{cat.category_name}}">{{cat.category_name}}</option>
@@ -14,52 +15,52 @@
                 </select>
                     <label>Ad Category</label>
                 </div>
-            </div>
+            
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
-                <input id="ad_name" name="ad_name" type="text">
+                <input id="ad_name" name="ad_name" type="text" required>
                 <label for="icon_prefix">Ad Name</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
-                <textarea name="ad_description" id="ad_description" class="materialize-textarea"></textarea>
+                <textarea name="ad_description" id="ad_description" class="materialize-textarea" required></textarea>
                 <label for="icon_telephone">Ad Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="ad_image" id="ad_image" class="materialize-textarea"></textarea>
+                <i class="material-icons prefix">image</i>
+                <textarea name="ad_image" id="ad_image" class="materialize-textarea" required></textarea>
                 <label for="icon_telephone">URL for Image</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="asking_price" id="asking_price" class="materialize-textarea"></textarea>
+                <i class="material-icons prefix">attach_money</i>
+                <textarea name="asking_price" id="asking_price" class="materialize-textarea" required></textarea>
                 <label for="icon_telephone">Asking Price</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="seller_name" id="seller_name" class="materialize-textarea"></textarea>
+                <i class="material-icons prefix">person</i>
+                <textarea name="seller_name" id="seller_name" class="materialize-textarea" required></textarea>
                 <label for="icon_telephone">Seller Name</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <textarea name="phone_number" id="phone_number" class="materialize-textarea"></textarea>
+                <i class="material-icons prefix">phone</i>
+                <textarea name="phone_number" id="phone_number" class="materialize-textarea" required></textarea>
                 <label for="icon_telephone">Phone Number</label>
             </div>
         </div>
         <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">poll</i>
-                    <select id="county" name="county_name">
+                    <i class="material-icons prefix">map</i>
+                    <select id="county" name="county_name" required>
                   <option value="" disabled selected>Choose County</option>
                   {% for cou in counties %}
                       <option value="{{cou.county_name}}">{{cou.county_name}}</option>
@@ -75,6 +76,7 @@
              </button>
         </div>
     </form>
+</div>
 </div>
 
 {% endblock %}

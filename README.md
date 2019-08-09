@@ -1,6 +1,42 @@
 The idea if for a basic buy and sell website.
 
 
+Have post ad be more visible.
+Delete Confirm.
+Use better icons all around.
+Limit characters on home screen.
+Add Tooltip if not take too long.
+Make Responsive.
+Make required fields.
+Remove Navbar/Just Logo
+Remove Time from dates/ Display as "Date: 2019/08/07"
+Other at the end.
+
+
+Display number of ads in category/county in modal
+Think about segmenting all adds by category
+URL lib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 comments section?
